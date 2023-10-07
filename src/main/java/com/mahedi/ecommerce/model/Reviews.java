@@ -13,15 +13,9 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Products extends BaseModel{
-    private String productName;
-    private String description;
-    private long price;
-    private boolean availability;
+public class Reviews extends BaseModel{
+    private String review;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Reviews>reviews;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Rates> rates;
+    private List<Reacts>reacts;
 }

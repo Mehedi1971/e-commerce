@@ -8,4 +8,6 @@ public interface CategoriesService {
     Categories saveCategories(Categories categories);
 
     List<Categories> getAllCategories();
+
+    List<Categories> getCategory(String category);
 }

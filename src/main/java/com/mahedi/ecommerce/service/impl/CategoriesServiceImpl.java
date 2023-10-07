@@ -1,5 +1,6 @@
 package com.mahedi.ecommerce.service.impl;
 
+import com.mahedi.ecommerce.enums.ActiveStatus;
 import com.mahedi.ecommerce.model.Categories;
 import com.mahedi.ecommerce.repository.CategoriesRepository;
 import com.mahedi.ecommerce.service.CategoriesService;
@@ -22,5 +23,10 @@ public class CategoriesServiceImpl implements CategoriesService {
     @Override
     public List<Categories> getAllCategories() {
         return categoriesRepository.findAll();
+    }
+
+    @Override
+    public List<Categories> getCategory(String category) {
+        return categoriesRepository.findAllByActiveStatusAndCategory(ActiveStatus.ACTIVE.getValue(),category);
     }
 }
