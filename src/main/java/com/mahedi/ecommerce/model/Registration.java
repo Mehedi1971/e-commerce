@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
@@ -13,6 +14,7 @@ import lombok.NonNull;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Registration extends BaseModel {
     private String name;
     private String address;
@@ -21,6 +23,7 @@ public class Registration extends BaseModel {
     private String email;
     @NotBlank(message = "This field is mandatory")
     @Size(min = 4, max = 8,message = "")
+    @EqualsAndHashCode.Exclude
     private String password;
     private String verificationNumber;
 }

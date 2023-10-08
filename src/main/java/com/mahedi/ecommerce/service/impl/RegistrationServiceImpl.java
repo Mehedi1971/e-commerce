@@ -36,6 +36,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         registration.setVerificationNumber(verificationNumber);
 
         javaMailSender.send(mimeMessage);
+        registration.setPassword(String.valueOf(registration.getPassword().hashCode()));
          registrationRepository.save(registration);
         return "Mail Send";
     }
