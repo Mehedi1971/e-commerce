@@ -30,9 +30,9 @@ public class BaseModel {
     @PrePersist
     public void setPreInsertData(){
         this.createAt=new Date();
-        if(this.activeStatus == null){
-            this.activeStatus= ActiveStatus.ACTIVE.getValue();
-        }
+//        if(this.activeStatus == null){
+//            this.activeStatus= ActiveStatus.ACTIVE.getValue();
+//        }
     }
 
     @PreUpdate
