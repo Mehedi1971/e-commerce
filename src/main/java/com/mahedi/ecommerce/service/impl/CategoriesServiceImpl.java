@@ -2,7 +2,9 @@ package com.mahedi.ecommerce.service.impl;
 
 import com.mahedi.ecommerce.enums.ActiveStatus;
 import com.mahedi.ecommerce.model.Categories;
+import com.mahedi.ecommerce.model.Products;
 import com.mahedi.ecommerce.repository.CategoriesRepository;
+import com.mahedi.ecommerce.repository.ProductsRepository;
 import com.mahedi.ecommerce.service.CategoriesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,9 +16,15 @@ import java.util.List;
 public class CategoriesServiceImpl implements CategoriesService {
 
     private final CategoriesRepository categoriesRepository;
-
+private final ProductsRepository productsRepository;
     @Override
     public Categories saveCategories(Categories categories) {
+        Products products=new Products();
+        if(products.getProductName()!=null){
+            products.setAvailability(1);
+            productsRepository.save(products);
+        }
+
         return categoriesRepository.save(categories);
     }
 

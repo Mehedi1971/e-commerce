@@ -1,42 +1,50 @@
 package com.mahedi.ecommerce.model;
 
-import com.mahedi.ecommerce.enums.ActiveStatus;
-import jakarta.persistence.*;
+import com.mahedi.ecommerce.enums.AvailableStatus;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @MappedSuperclass
 public class BaseModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
 
-    @Column(updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createAt;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
 
-    @Column(updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updateAt;
+  @Column(updatable = false)
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date createAt;
 
-    private Integer activeStatus;
+  @Column(updatable = false)
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date updateAt;
 
-    @PrePersist
-    public void setPreInsertData(){
-        this.createAt=new Date();
+  private Integer activeStatus;
+
+  @PrePersist
+  public void setPreInsertData() {
+    this.createAt = new Date();
 //        if(this.activeStatus == null){
 //            this.activeStatus= ActiveStatus.ACTIVE.getValue();
 //        }
     }
 
-    @PreUpdate
-    public void setPreUpdateData(){
-        this.updateAt=new Date();
-    }
+  @PreUpdate
+  public void setPreUpdateData() {
+    this.updateAt = new Date();
+  }
 }
