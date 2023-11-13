@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/categories")
@@ -27,5 +28,14 @@ public class CategoriesController {
     @GetMapping("/{category}")
     public List<Categories> getCategory(@PathVariable String category){
         return categoriesService.getCategory(category);
+    }
+    @GetMapping("/{price}")
+    public List<Categories> getprice(@PathVariable String price){
+        return categoriesService.getPrice(price);
+    }
+
+    @GetMapping("/price")
+    public Optional<Categories> getprices(){
+        return categoriesService.getPrices();
     }
 }

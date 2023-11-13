@@ -1,5 +1,7 @@
 package com.mahedi.ecommerce.controller;
 
+import com.mahedi.ecommerce.dto.CategoryListDto;
+import com.mahedi.ecommerce.dto.ProductListDto;
 import com.mahedi.ecommerce.model.Products;
 import com.mahedi.ecommerce.repository.ProductsRepository;
 import com.mahedi.ecommerce.service.ProductsService;
@@ -20,5 +22,13 @@ public class ProductsController {
     @GetMapping("/{productName}")
     public List<Products> getProducts(@PathVariable String productName){
         return productsService.getProducts(productName);
+    }
+    @GetMapping("/CategoryList")
+    public List<CategoryListDto> getCategoryList(){
+        return productsService.getCategoryList();
+    }
+    @GetMapping("/ProductList")
+    public List<ProductListDto> getProductList(){
+        return productsService.getProductList();
     }
 }

@@ -3,6 +3,7 @@ package com.mahedi.ecommerce.service;
 import com.mahedi.ecommerce.model.Categories;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CategoriesService {
     Categories saveCategories(Categories categories);
@@ -10,4 +11,8 @@ public interface CategoriesService {
     List<Categories> getAllCategories();
 
     List<Categories> getCategory(String category);
+
+    List<Categories> getPrice(String price);
+
+    Optional<Categories> getPrices();
 }
