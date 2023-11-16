@@ -27,8 +27,6 @@ public class ProductsServiceImpl implements ProductsService {
 //    }
     @Override
     public List<Products> getProducts(String productName) {
-        List<Products> products=productsRepository.findAllByActiveStatusAndProductName(ActiveStatus.ACTIVE.getValue(), productName);
-
         return productsRepository.findAllByActiveStatusAndProductName(ActiveStatus.ACTIVE.getValue(), productName);
     }
 
@@ -53,7 +51,10 @@ public class ProductsServiceImpl implements ProductsService {
     @Override
     public List<ProductListDto> getProductList() {
         List<Categories> categories=categoriesRepository.findAll();
-
+List<Products>categories1=categories.stream()
+        .flatMap(c->c.getProducts().stream())
+        .collect(Collectors.toList());
+        System.out.println(categories1);
         return categories.stream()
                 .flatMap(c->c.getProducts().stream()
                         .map(p->{
